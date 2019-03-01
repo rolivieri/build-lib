@@ -14,7 +14,7 @@ setup() {
     [ -x "${SCRIPT_DIR}/go-chaincode/vendor-dependencies.sh" ]
 }
 
-@test "vendor-dependencies.sh: fetch_dependencies should run without errors" {
+@test "vendor-dependencies.sh: fetch_dependencies should run without errors when .govendor_packages files does not exist" {
 
     cat << EOF > sample-config.json
 {
