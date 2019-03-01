@@ -2,6 +2,15 @@
 
 This repository contains common scripts for use in Blockchain build pipelines.
 
+## GO vendoring
+If your GO chanincode requires vendoring of GO packages, you should include a `.govendor_packages` file inside each chaincode component folder. At the moment, you should only specify in the `.govendor_packages` file libraries that are part of the Fabric binaries. Specifying libraries that are not in the Fabric binaries will more than likely result in compilation errors during the build phase of the toolchain (we plan to address this limitation soon).
+
+The `.govendor_packages` file should contain one line for every GO package that should be vendored in. The syntax for specifying a GO dependency in the `.govendor_packages` file simply follows the format required by the [govendor](https://github.com/kardianos/govendor) tool.
+
+```
+github.com/hyperledger/fabric/core/chaincode/lib/cid@v1.2.1
+```
+
 ## Unit tests
 
 This project is tested using Bats when making pull requests.
