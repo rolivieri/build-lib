@@ -14,3 +14,47 @@ setup() {
     [ -x "${SCRIPT_DIR}/go-chaincode/vendor-dependencies.sh" ]
 }
 
+@test "vendor-dependencies.sh: fetch_dependencies should run without errors" {
+
+    cat << EOF > sample-config.json
+{
+  "org1": {
+    "chaincode": [
+      {
+        "name": "contract1",
+        "path": "chaincode/contract1",
+        "channels": [ "channel1" ],
+        "init_args": [],
+        "instantiate": false,
+        "install": true
+      }
+    ]
+  },
+  "org2": {
+    "chaincode": [
+      {
+        "name": "contract1",
+        "path": "chaincode/contract1",
+        "channels": [ "channel1" ],
+        "init_args": [],
+        "instantiate": false,
+        "install": true
+      }
+    ]
+  }
+}
+EOF
+
+    stub go \
+        "get -u github.com/kardianos/govendor : true"
+
+    source "${SCRIPT_DIR}/go-chaincode/vendor-dependencies.sh"
+
+    run fetch_dependencies "sample-config.json"
+ 
+    echo $output
+    [ $status -eq 0 ]
+   
+    rm sample-config.json
+    unstub go
+}
