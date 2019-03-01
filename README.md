@@ -13,6 +13,8 @@ github.com/hyperledger/fabric/core/chaincode/lib/cid@v1.2.1
 
 ## Unit tests
 
+Make sure you have installed [jq](https://stedolan.github.io/jq/download/) before attempting to run the test cases on your local system.
+
 This project is tested using Bats when making pull requests.
 
 To run the tests locally, install [bats-core](https://github.com/bats-core/bats-core) and [bats-mock](https://github.com/jasonkarns/bats-mock). Here are a few tips on installing these two libraries so you don't go into a rabbit hole when attempting to run the test cases.

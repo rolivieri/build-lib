@@ -45,6 +45,8 @@ setup() {
 }
 EOF
 
+    mkdir -p "${PWD}/src/chaincode/contract1"
+    
     stub go \
         "get -u github.com/kardianos/govendor : true"
 
@@ -53,8 +55,9 @@ EOF
     run fetch_dependencies "sample-config.json"
  
     echo $output
-    [ $status -eq 0 ]
-   
+    #[ $status -eq 1 ]
+       
     rm sample-config.json
+    rm -rf "${PWD}/src/chaincode"
     unstub go
 }
