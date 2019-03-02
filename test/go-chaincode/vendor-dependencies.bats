@@ -53,11 +53,19 @@ EOF
     source "${SCRIPT_DIR}/go-chaincode/vendor-dependencies.sh"
 
     run fetch_dependencies "sample-config.json"
- 
-    echo $output
-    #[ $status -eq 1 ]
-       
+
+    # Clean up before assertions
     rm sample-config.json
     rm -rf "${PWD}/src/chaincode"
     unstub go
+ 
+    # Assertions
+    [ $status -eq 0 ]  
+    [ "${lines[0]}" = "Processing org 'org1'..." ]
+    [ "${lines[1]}" = "About to fetch dependencies for 'chaincode/contract1'" ]
+    [ "${lines[3]}" = "No .govendor_packages file found; no dependencies to vendor in." ]
+
+    [ "${lines[6]}" = "Processing org 'org2'..." ]
+    [ "${lines[7]}" = "About to fetch dependencies for 'chaincode/contract1'" ]
+    [ "${lines[9]}" = "No .govendor_packages file found; no dependencies to vendor in." ]  
 }
