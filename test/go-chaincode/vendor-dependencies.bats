@@ -83,6 +83,14 @@ EOF
         "init_args": [],
         "instantiate": false,
         "install": true
+      },
+      {
+        "name": "contract2",
+        "path": "chaincode/contract2",
+        "channels": [ "channel2" ],
+        "init_args": [],
+        "instantiate": false,
+        "install": true
       }
     ]
   }
@@ -121,9 +129,12 @@ EOF
 
     stub govendor \
       "init : true" \
+      "fetch *github.com/hyperledger/fabric/core/chaincode/lib/cid@v1.2.1* : true" \
+       "init : true" \
       "fetch *github.com/hyperledger/fabric/core/chaincode/lib/cid@v1.2.1* : true"
 
     stub cp \
+      "-r vendor : true" \
       "-r vendor : true"
 
     source "${SCRIPT_DIR}/go-chaincode/vendor-dependencies.sh"
