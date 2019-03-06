@@ -70,7 +70,7 @@ EOF
     [ "${lines[9]}" = "No .govendor_packages file found; no dependencies to vendor in." ]  
 }
 
-@test "vendor-dependencies.sh: fetch_dependencies should run without errors when .govendor_packages file has new lines and white spaces" {
+@test "vendor-dependencies.sh: fetch_dependencies should run without errors when .govendor_packages file has new lines and white spaces; also testing with multiple .govendor_packages file (one per chaincode component)" {
 
     cat << EOF > sample-config.json
 {
