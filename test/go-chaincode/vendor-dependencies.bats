@@ -156,6 +156,10 @@ EOF
     [ "${lines[3]}" = "Found .govendor_packages file." ]
     [ "${lines[4]}" = "Fetching github.com/hyperledger/fabric/core/chaincode/lib/cid@v1.2.1" ]
     [ "${lines[7]}" = "Finished looking up dependencies for chaincode component." ]
+    [ "${lines[8]}" = "About to fetch dependencies for 'chaincode/contract2'" ]
+    [ "${lines[10]}" = "Found .govendor_packages file." ]
+    [ "${lines[11]}" = "Fetching github.com/hyperledger/fabric/core/chaincode/lib/cid@v1.2.1" ]
+    [ "${lines[14]}" = "Finished looking up dependencies for chaincode component." ]
 }
 
 teardown() {
