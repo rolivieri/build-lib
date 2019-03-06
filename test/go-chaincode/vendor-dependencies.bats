@@ -107,10 +107,8 @@ EOF
         "get -u github.com/kardianos/govendor : true"
 
     stub govendor \
-      "init : true"
-
-    stub govendor \
-       "fetch : true" 
+      "init : true" \
+      "fetch *github.com/hyperledger/fabric/core/chaincode/lib/cid@v1.2.1* : true"
 
     stub cp \
       "-r vendor : true"
@@ -134,4 +132,8 @@ EOF
     [ "${lines[3]}" = "Found .govendor_packages file." ]
     [ "${lines[4]}" = "Fetching github.com/hyperledger/fabric/core/chaincode/lib/cid@v1.2.1" ]
     [ "${lines[7]}" = "Finished looking up dependencies for chaincode component." ]
+}
+
+teardown() {
+    cleanup_stubs
 }
