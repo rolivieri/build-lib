@@ -90,6 +90,7 @@ EOF
 EOF
 
     mkdir -p "${PWD}/src/chaincode/contract1"
+    mkdir -p "${PWD}/src/chaincode/contract2"
 
     cat << EOF > "${PWD}/src/chaincode/contract1/.govendor_packages"
 
@@ -102,7 +103,19 @@ EOF
 
   
 EOF
-    
+
+     cat << EOF > "${PWD}/src/chaincode/contract2/.govendor_packages"
+
+
+
+       github.com/hyperledger/fabric/core/chaincode/lib/cid@v1.2.1     
+
+
+
+
+  
+EOF
+
     stub go \
         "get -u github.com/kardianos/govendor : true"
 
